@@ -2,6 +2,7 @@
 	<h1><%= @webpage.name %></h1>
 	<h3>Bookmarked pages:</h3>
 	<% @webpage.bookmarks.each do |b| %>
-		<li><%= link_to "#{@webpage.protocol}#{@webpage.name}#{b.name}" %></li>
+		<% bookmarked_page = "#{@webpage.protocol}#{@webpage.name}#{b.name}" %>
+		<li><%= link_to bookmarked_page, bookmarked_page %></li>
 	<% end %>
 </div>

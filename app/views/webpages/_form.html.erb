@@ -1,0 +1,8 @@
+<div>
+	<%= form_with model: Webpage.new do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+
+		<%= f.submit 'Create Webpage' %>
+	<% end %>
+</div>

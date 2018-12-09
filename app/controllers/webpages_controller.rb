@@ -14,4 +14,14 @@ class WebpagesController < ApplicationController
   		f.json { render json: @webpage }
   	end
   end
+
+  def create
+  	@webpage = Webpage.create(webpage_params)
+  end
+
+  private
+
+  def webpage_params
+  	params.require(:webpage).permit(:name)
+  end
 end

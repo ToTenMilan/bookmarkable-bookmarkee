@@ -1,14 +1,17 @@
 class Webpage
 	class AbsPathParser
-		attr_accessor :abs_path, :domain, :path
+		attr_accessor :abs_path, :protocol, :domain, :path
 
 		def initialize(abs_path)
 			@abs_path = abs_path
+			@protocol = ''
 			@domain = ''
 			@path = ''
 		end
 
-		def remove_protocol
+		def extract_protocol
+			valid_protocols = ['https://', 'http://']
+			@protocol = @abs_path.split('//').first + '//' if valid_protocols.any? { |pr| (@abs_path.include?(pr)) }
 			@domain = @abs_path.gsub(/https:\/\/|http:\/\//, '')
 		end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_163544) do
+ActiveRecord::Schema.define(version: 2018_12_09_205109) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.string "name"
@@ -25,7 +25,9 @@ ActiveRecord::Schema.define(version: 2018_12_09_163544) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "protocol", default: ""
     t.index ["name"], name: "index_webpages_on_name", unique: true
+    t.index ["protocol"], name: "index_webpages_on_protocol"
   end
 
 end

@@ -16,10 +16,12 @@ class WebpagesController < ApplicationController
   end
 
   def create
-  	# webpage = Webpage.new(webpage_params)
-  	domain, path = Webpage.extract_domain_and_path(params[:webpage][:name])
+  	protocol, domain, path = Webpage.extract_domain_and_path(params[:webpage][:name])
+  	webpage = Webpage.find_or_initialize_by(name: domain)
+  	bookmark = webpage.bookmarks.new(name: path)
   	respond_to do |f|
-	  	if webpage.save
+	  	if webpage.save && bookmark.save
+	  		webpage.update(protocol: protocol)
 	  		f.html do
 	  			flash[:success] = "Webpage created"
 	  			redirect_to webpage
@@ -29,7 +31,7 @@ class WebpagesController < ApplicationController
 	  		end
 	  	else
 	  		f.html do
-		  		flash[:danger] = webpage.errors.full_messages
+		  		flash[:danger] = [webpage.errors.full_messages, bookmark.errors.full_messages].flatten
 		  		redirect_to root_url
 		  	end
 		  	f.json do

@@ -1,7 +1,7 @@
 <div>
 	<%= @webpage.name %>
 	<h3>Bookmarked pages:</h3>
-	<li>page 1</li>
-	<li>page 2</li>
-	<li>page 3</li>
+	<% @webpage.bookmarks.each do |b| %>
+		<li><%= b.name %></li>
+	<% end %>
 </div>

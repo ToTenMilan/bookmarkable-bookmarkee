@@ -1,24 +1,21 @@
-# README
+# Bookmarkable Bookmarkee
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Add your webpages and their bookmarks.
 
-Things you may want to cover:
+You can view the list of your bookmarked websites, click on them and be redirected to their saved bookmarks
 
-* Ruby version
+##### Things solved
+- Webpages index and show view
+- Bookmarks index in webpages view (bookmark belongs to webpage)
+- handle error of empty webpage input & exisitng webpage/bookmark input
+- absolute path parser + some unit tests
+- creating webpage and its bookmark by absolute path
+- adding bookmark to already existing webpage
 
-* System dependencies
+##### Issues tried but not solved:
+- handling errors of adding absolute path like `hts://www.foo.com` will not parse protocol properly  and add it as is
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##### Not enough time for:
+- some styling
+- tags
+- all the rest...

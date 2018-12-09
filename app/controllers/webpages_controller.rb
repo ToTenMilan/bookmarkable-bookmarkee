@@ -16,8 +16,8 @@ class WebpagesController < ApplicationController
   end
 
   def create
-  	webpage = Webpage.new(webpage_params)
-  	
+  	# webpage = Webpage.new(webpage_params)
+  	domain, path = Webpage.extract_domain_and_path(params[:webpage][:name])
   	respond_to do |f|
 	  	if webpage.save
 	  		f.html do

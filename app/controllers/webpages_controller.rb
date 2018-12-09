@@ -17,6 +17,7 @@ class WebpagesController < ApplicationController
 
   def create
   	webpage = Webpage.new(webpage_params)
+  	
   	respond_to do |f|
 	  	if webpage.save
 	  		f.html do
